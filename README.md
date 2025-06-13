@@ -1,2 +1,2 @@
 # MIP_corporate
-MIP様コーポレートサイト作成
+MIP様コーポレートサイト
