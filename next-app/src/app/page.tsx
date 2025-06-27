@@ -1,7 +1,9 @@
-export default function Home() {
+const Top = () => {
     return (
         <div>
-            <h1 className="text-[orange]">あ</h1>
+            <h1>トップページ</h1>
         </div>
     );
-}
+};
+
+export default Top;
