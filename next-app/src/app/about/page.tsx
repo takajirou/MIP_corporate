@@ -1,7 +1,9 @@
+import MainVisual from "@/components/MainVisual";
+
 const About = () => {
     return (
         <div>
-            <h1>MIPについて</h1>
+            <MainVisual title={"About"} text={"MIPについて"} src={"aboutMainImg.svg"}/>
         </div>
     );
 };
