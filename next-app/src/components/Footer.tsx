@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+    const pathname = usePathname();
+
     return (
         <footer className="text-white">
-            <section className="bg-gradient-to-b from-[#f28900] to-[#ffcf4a] h-[434px] relative px-[7.5%] py-[84px] flex justify-between">
-                {/* <Image
+            {pathname !== "/contact" ? (
+                <section className="bg-gradient-to-b from-[#f28900] to-[#ffcf4a] h-[434px] relative px-[7.5%] py-[84px] flex justify-between">
+                    {/* <Image
                     src="/curve_line.svg"
                     alt="装飾"
                     width={0}
@@ -12,17 +18,21 @@ const Footer = () => {
                     className="absolute left-0 bottom-25"
                 /> */}
 
-                <div>
-                    <h2 className="text-[2rem]">お問い合わせ</h2>
-                    <p className="text-[6.4rem]/30 font-bold">Contact</p>
-                    <p className="text-[2.4rem]/20 font-[600]">
-                        ご質問・ご相談などはお気軽にお問い合わせください
-                    </p>
-                </div>
-                <div className="w-[160px] h-[160px] bg-white rounded-full flex justify-center items-center mt-[85px] mb-[21px]">
-                    <Image src="/contact.svg" alt="お問い合わせ" width={50} height={40} />
-                </div>
-            </section>
+                    <div>
+                        <h2 className="text-[2rem]">お問い合わせ</h2>
+                        <p className="text-[6.4rem]/30 font-bold">Contact</p>
+                        <p className="text-[2.4rem]/20 font-[600]">
+                            ご質問・ご相談などはお気軽にお問い合わせください
+                        </p>
+                    </div>
+                    <div className="w-[160px] h-[160px] bg-white rounded-full flex justify-center items-center mt-[85px] mb-[21px]">
+                        <Image src="/contact.svg" alt="お問い合わせ" width={50} height={40} />
+                    </div>
+                </section>
+            ) : (
+                ""
+            )}
+
             <section className="text-[#0354A5] text-[16px] pt-[55px] pb-[47px] bg-white">
                 <nav>
                     <table className="w-[100%] px-[7.5%] text-center border-separate border-spacing-y-[24px] table-fixed">
