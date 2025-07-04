@@ -5,7 +5,7 @@ const About = () => {
         <div>
             <MainVisual title={"About"} text={"MIPについて"} src={"aboutMainImg.svg"}/>
         </div>
-    );
+    )
 };
 
 export default About;
