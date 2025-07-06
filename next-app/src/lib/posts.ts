@@ -8,10 +8,13 @@ import html from "remark-html";
 export interface PostMatter {
     company: string;
     title: string;
+    category: string;
     description: string;
     work: string;
     goal: string;
     info: string;
+    list_request: string;
+    tags: string[];
     requests: string[];
     issues: string[];
     resolutions: ResolutionMatter[];
