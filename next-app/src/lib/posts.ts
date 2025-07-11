@@ -10,6 +10,8 @@ export interface PostMatter {
     title: string;
     category: string;
     description: string;
+    img: string;
+    previewImg: string;
     work: string;
     goal: string;
     info: string;
