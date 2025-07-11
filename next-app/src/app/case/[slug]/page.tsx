@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
-import Footer from "@/components/Footer";
-import Link from "next/link";
+import ArrowBtn from "@/components/ArrowBtn";
 
 interface BlogPostPageProps {
     params: {
@@ -35,7 +34,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const post = await getPostBySlug(params.slug);
-
+    
     if (!post) {
         notFound();
     }
@@ -107,17 +106,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         </div>
                     </section>
                     <div className="mt-[64px] flex items-center gap-[26px]">
-                        <Link
-                            href={"/case"}
-                            className="border-2 border-[#0354A5] rounded-full w-[55px] h-[55px] flex justify-center items-center"
-                        >
-                            <Image src="/backArrow.svg" alt="" width={25} height={25} />
-                        </Link>
+                        <ArrowBtn link="case" direction="back"/>
                         <p>事例一覧へもどる</p>
                     </div>
                 </section>
             </section>
-            <Footer />
         </>
     );
 }
