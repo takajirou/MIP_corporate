@@ -13,6 +13,7 @@ interface Post {
     title: string;
     list_request: string;
     tags: string[];
+    previewImg: string;
 }
 
 interface BlogIndexClientProps {
@@ -22,6 +23,7 @@ interface BlogIndexClientProps {
 export default function CaseIndexClient({ posts }: BlogIndexClientProps) {
     const genres = ["ALL", "WEB", "システム"];
     const [filter, setFilter] = useState<string>("ALL");
+    const [hoveredGenre, setHoveredGenre] = useState<string | null>(null);
 
     const filteredPosts = filter === "ALL"
     ? posts
@@ -35,22 +37,23 @@ export default function CaseIndexClient({ posts }: BlogIndexClientProps) {
         {/* ジャンルフィルター */}
             <div className="flex gap-[20px]">
             {genres.map((genre) => (
-            <button
-                key={genre}
-                onClick={() => setFilter(genre)}
-                className={`bg-white min-w-[140px] pl-[12px] pr-[20px] py-[10px] flex gap-[10px] text-[2rem] items-center shadow-[0_0_10px_0_rgba(0,0,0,0.25)]
-                ${filter === genre ? "bg-[#EEE]" : ""}
-                `}
-            >
-                <Image
-                    src="/purple_rectangle.svg"
-                    alt=""
-                    width={0}
-                    height={0}
-                    className="w-auto h-auto"
-                />
-                <p>{genre}{genre !== "ALL" && "開発"}</p>
-            </button>
+                <button
+                    key={genre}
+                    onClick={() => setFilter(genre)}
+                    onMouseEnter={() => setHoveredGenre(genre)}
+                    onMouseLeave={() => setHoveredGenre(null)}
+                    className={`min-w-[140px] pl-[12px] pr-[20px] py-[10px] flex gap-[10px] text-[2rem] items-center shadow-[0_0_10px_0_rgba(0,0,0,0.25)] cursor-pointer transition-all duration-300 hover:bg-[#0354A5] hover:text-white
+                    ${filter === genre ? "bg-[#0354A5] text-white" : "bg-white text-[#0354A5]"}
+                    `}
+                >
+                    <Image
+                        src={`/${filter === genre || hoveredGenre === genre ? "white" : "purple"}_rectangle.svg`}
+                        alt=""
+                        width={30}
+                        height={20}
+                    />
+                    <p>{genre}{genre !== "ALL" && "開発"}</p>
+                </button>
             ))}
         </div>
 
@@ -95,7 +98,7 @@ export default function CaseIndexClient({ posts }: BlogIndexClientProps) {
                     </div>
                     </section>
                     <Image
-                    src="/aboutMainImg.svg"
+                    src={`/${post.previewImg}`}
                     alt=""
                     width={0}
                     height={0}

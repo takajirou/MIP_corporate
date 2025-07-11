@@ -34,7 +34,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const post = await getPostBySlug(params.slug);
-    
+
     if (!post) {
         notFound();
     }
@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <section className="mt-[45px]">
                     <h2 className="font-bold mt-[15px]">{post.work}</h2>
                     <p className="text-[32px] font-bold">{post.goal}</p>
-                    <section className="max-w-[750px] text-[20px] font-normal mt-[20px] py-[20px] px-[13px] bg-[#FFE394]">
+                    <section className="min-w-[750px] text-[20px] font-normal mt-[20px] py-[20px] px-[13px] bg-[#FFE394]">
                         <h3>{post.company}</h3>
                         <p>{post.info}</p>
                     </section>
@@ -83,11 +83,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         <h3 className="font-semibold text-[32px]">私達の解決</h3>
                         <div className="flex gap-[16px]">
                             <Image
-                                src="/contact.svg"
+                                src={`/${post.img}`}
                                 alt=""
                                 width={0}
                                 height={0}
-                                className="w-[388px] h-[423px]"
+                                className="w-[388px] h-auto object-contain"
                             />
                             <section className="text-[20px] flex flex-col gap-[30px]">
                                 {post.resolutions.map((resolution, index) => (
